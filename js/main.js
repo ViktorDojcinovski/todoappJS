@@ -29,7 +29,7 @@ function onClickAddItem(e, input, items) {
     // after pushing the item clear the input field
     input.value = "";
     // render my list
-    renderList();
+    renderList(items, itemList);
   } else {
     // handle empty input field
   }
@@ -39,7 +39,7 @@ function onClickAddItem(e, input, items) {
  * 3. Render items into itemlist
  */
 
-function renderList() {
+function renderList(items, itemList) {
   itemList.innerHTML = "";
 
   items.forEach((el) => {
@@ -47,28 +47,58 @@ function renderList() {
       "afterbegin",
       "<div class='item my-3'><h5 class='item-name text-capitalize'>" +
         el +
-        "</h5><div class='item-icons'><button class='complete-btn'>Complete</button><button class='edit-btn'>Edit</button><button class='delete-btn'>Delete</button></div></div>"
+        "</h5><div class='item-icons'><button class='btn btn-primary complete-btn'>Complete</button><button class='btn btn-warning edit-btn'>Edit</button><button class='btn btn-danger delete-btn'>Delete</button></div></div>"
     );
 
-    handleEl(el);
+    handleEl(el, itemList);
   });
-
-  console.log(items);
-  console.log(itemList);
 }
 
-// hint:
-function handleEl(el) {
-  // find the html element
-  let items = itemList.querySelectorAll(".item");
+const handleEl = function (el, itemList) {
+  const todoItems = itemList.querySelectorAll(".item");
 
-  items.forEach((item) => {
-    if (item.querySelector(".item-name").textContent == el) {
-      item.querySelector(".complete-btn", onClickComplete);
+  todoItems.forEach(function (item) {
+    if (item.querySelector(".item-name").textContent === el) {
+      //complete event listener
+      item
+        .querySelector(".complete-btn")
+        .addEventListener("click", function () {
+          item.querySelector(".item-name").classList.toggle("completed");
+          this.classList.toggle("visibility");
+        });
+      //edit event listener
+      item.querySelector(".edit-btn").addEventListener("click", function () {
+        input.value = el;
+        itemList.removeChild(item);
+
+        items = items.filter(function (item) {
+          return item !== el;
+        });
+      });
+      // delete event listener
+      item.querySelector(".delete-btn").addEventListener("click", function () {
+        itemList.removeChild(item);
+
+        items = items.filter(function (item) {
+          return item !== el;
+        });
+      });
     }
   });
-}
+};
 
-function onClickComplete() {}
+// hint:
+// function handleEl(el) {
+//   // find the html element
+//   let items = itemList.querySelectorAll(".item");
+
+//   items.forEach((item) => {
+//     if (item.querySelector(".item-name").textContent == el) {
+//       item.querySelector(".complete-btn", onClickComplete);
+//     }
+//   });
+// }
+
+// function onClickComplete() {}
 
 // hint 2: to remove element from HTML use removeChild method

@@ -145,7 +145,7 @@ function onClickAddItem(e, input, items) {
 
     input.value = ""; // render my list
 
-    renderList();
+    renderList(items, itemList);
   } else {// handle empty input field
   }
 }
@@ -154,28 +154,52 @@ function onClickAddItem(e, input, items) {
  */
 
 
-function renderList() {
+function renderList(items, itemList) {
   itemList.innerHTML = "";
   items.forEach(function (el) {
-    itemList.insertAdjacentHTML("afterbegin", "<div class='item my-3'><h5 class='item-name text-capitalize'>" + el + "</h5><div class='item-icons'><button class='complete-btn'>Complete</button><button class='edit-btn'>Edit</button><button class='delete-btn'>Delete</button></div></div>");
-    handleEl(el);
-  });
-  console.log(items);
-  console.log(itemList);
-} // hint:
-
-
-function handleEl(el) {
-  // find the html element
-  var items = itemList.querySelectorAll(".item");
-  items.forEach(function (item) {
-    if (item.querySelector(".item-name").textContent == el) {
-      item.querySelector(".complete-btn", onClickComplete);
-    }
+    itemList.insertAdjacentHTML("afterbegin", "<div class='item my-3'><h5 class='item-name text-capitalize'>" + el + "</h5><div class='item-icons'><button class='btn btn-primary complete-btn'>Complete</button><button class='btn btn-warning edit-btn'>Edit</button><button class='btn btn-danger delete-btn'>Delete</button></div></div>");
+    handleEl(el, itemList);
   });
 }
 
-function onClickComplete() {} // hint 2: to remove element from HTML use removeChild method
+var handleEl = function handleEl(el, itemList) {
+  var todoItems = itemList.querySelectorAll(".item");
+  todoItems.forEach(function (item) {
+    if (item.querySelector(".item-name").textContent === el) {
+      //complete event listener
+      item.querySelector(".complete-btn").addEventListener("click", function () {
+        item.querySelector(".item-name").classList.toggle("completed");
+        this.classList.toggle("visibility");
+      }); //edit event listener
+
+      item.querySelector(".edit-btn").addEventListener("click", function () {
+        input.value = el;
+        itemList.removeChild(item);
+        items = items.filter(function (item) {
+          return item !== el;
+        });
+      }); // delete event listener
+
+      item.querySelector(".delete-btn").addEventListener("click", function () {
+        itemList.removeChild(item);
+        items = items.filter(function (item) {
+          return item !== el;
+        });
+      });
+    }
+  });
+}; // hint:
+// function handleEl(el) {
+//   // find the html element
+//   let items = itemList.querySelectorAll(".item");
+//   items.forEach((item) => {
+//     if (item.querySelector(".item-name").textContent == el) {
+//       item.querySelector(".complete-btn", onClickComplete);
+//     }
+//   });
+// }
+// function onClickComplete() {}
+// hint 2: to remove element from HTML use removeChild method
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -204,7 +228,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51018" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53875" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
