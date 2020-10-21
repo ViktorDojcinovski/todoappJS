@@ -55,7 +55,7 @@ function renderList(items, itemList) {
 }
 
 const handleEl = function (el, itemList) {
-  const todoItems = itemList.querySelectorAll(".item");
+  const todoItems = itemList.querySelectorAll(".item"); // --> list of nodes that have class item
 
   todoItems.forEach(function (item) {
     if (item.querySelector(".item-name").textContent === el) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -18,64 +18,57 @@
     <link rel="stylesheet" href="/normalize.1114379f.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/main.c52e0fe2.css">
-    <link rel="stylesheet" href="/todos.40982169.css">
+    <link rel="stylesheet" href="/gallery.20afaf5e.css">
 
     <meta name="theme-color" content="#fafafa">
-  <script src="/normalize.1114379f.js"></script><script src="/main.c52e0fe2.js"></script><script src="/todos.40982169.js"></script></head>
-
+  <script src="/normalize.1114379f.js"></script><script src="/main.c52e0fe2.js"></script><script src="/gallery.20afaf5e.js"></script></head>
   <body>
-    <!-- Add your site or application content here -->
-    <div class="container">
-      <div class="row">
-        <div class="col mx-auto col-md-8 mt-3 text-center">
-          <!-- form -->
-          <form id="todos-form" class="my-3">
-            <h3 class="text-capitalize mb-4">My to do list</h3>
-            <div class="input-group">
-              <input type="text" class="form-control text-capitalize" id="item-input" placeholder="what do you need to do...">
-              <div class="input-group-append">
-                <button class="btn btn-primary text-capitalize" type="submit">
-                  add item
-                </button>
-              </div>
-            </div>
-          </form>
-          <div class="item-container">
-            <!-- end of form  -->
-            <div id="item-list" class="item-list my-5">
-              <!-- single item -->
-              <!-- <div class="item my-3">
-                <h5 class="item-name text-capitalize">write my JS homework</h5>
-                <div class="item-icons">
-                  <button class="complete-btn">Complete</button>
-                  <button class="edit-btn">Edit</button>
-                  <button class="delete-btn">Delete</button>
-                </div>
-              </div> -->
-              <!-- end of single item -->
-            </div>
-            <button type="button" class="btn btn-primary my-3 text-capitalize" id="clear-list">
-              clear items
-            </button>
+    <div class="row" id="store-items">
+      <!-- single item -->
+      <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="dougnuts">
+        <div class="card">
+          <div class="img-container">
+            <img src="/doughnut-1.b52e6c31.jpeg" class="card-img-top store-img" alt="">
           </div>
+        </div>
+        <!-- end of card-->
+      </div>
+      <!--end of single store item-->
+      <!-- single item -->
+      <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="dougnuts">
+        <div class="card">
+          <div class="img-container">
+            <img src="/doughnut-2.cd50da7a.jpeg" class="card-img-top store-img" alt="">
+          </div>
+        </div>
+        <!-- end of card-->
+      </div>
+      <!--end of single store item-->
+      <!-- single item -->
+      <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="dougnuts">
+        <div class="card">
+          <div class="img-container">
+            <img src="/doughnut-3.12048304.jpeg" class="card-img-top store-img" alt="">
+          </div>
+        </div>
+        <!-- end of card-->
+      </div>
+      <!--end of single store item-->
+    </div>
+
+    <!-- modal-container -->
+    <div id="container-fluid" class="container-fluid">
+      <div class="row lightbox-container align-items-center">
+        <div class="col-10 col-md-10 mx-auto text-right lightbox-holder">
+          <span class="lightbox-close">&times;</span>
+          <div class="lightbox-item"></div>
+          <span class="lightbox-control btnLeft"></span>
+          <span class="lightbox-control btnRight"></span>
         </div>
       </div>
     </div>
-    <script src="/modernizr-3.11.2.min.659b9f56.js"></script>
-    <script src="/plugins.7f97feee.js"></script>
-    <script src="/main.fb6bbcaf.js"></script>
 
-    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-    <script>window.ga = function () {
-  ga.q.push(arguments);
-};
-
-ga.q = [];
-ga.l = +new Date();
-ga("create", "UA-XXXXX-Y", "auto");
-ga("set", "anonymizeIp", true);
-ga("set", "transport", "beacon");
-ga("send", "pageview");</script>
-    <script src="https://www.google-analytics.com/analytics.js" async=""></script>
+    <script>var a = "b";</script>
+    <script src="/main-gallery.4c979d3b.js"></script>
   </body>
 </html>
