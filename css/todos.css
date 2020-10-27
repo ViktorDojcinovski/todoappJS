@@ -5,3 +5,12 @@
 .visibility {
   opacity: 0.5;
 }
+
+#feedback {
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+#feedback.show {
+  opacity: 1;
+}

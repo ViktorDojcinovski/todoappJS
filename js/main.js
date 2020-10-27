@@ -7,6 +7,7 @@ let input = document.getElementById("item-input");
 let addItem = document.querySelector("[type='submit']");
 let clear = document.getElementById("clear-list");
 let itemList = document.getElementById("item-list");
+let feedback = document.getElementById("feedback");
 
 console.log(itemList);
 
@@ -32,6 +33,11 @@ function onClickAddItem(e, input, items) {
     renderList(items, itemList);
   } else {
     // handle empty input field
+    feedback.classList.add("show");
+
+    setInterval(function () {
+      feedback.classList.remove("show");
+    }, 5000);
   }
 }
 

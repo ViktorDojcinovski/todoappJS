@@ -126,6 +126,7 @@ var input = document.getElementById("item-input");
 var addItem = document.querySelector("[type='submit']");
 var clear = document.getElementById("clear-list");
 var itemList = document.getElementById("item-list");
+var feedback = document.getElementById("feedback");
 console.log(itemList); // My variables
 
 var items = [];
@@ -146,7 +147,12 @@ function onClickAddItem(e, input, items) {
     input.value = ""; // render my list
 
     renderList(items, itemList);
-  } else {// handle empty input field
+  } else {
+    // handle empty input field
+    feedback.classList.add("show");
+    setInterval(function () {
+      feedback.classList.remove("show");
+    }, 5000);
   }
 }
 /**
@@ -163,7 +169,8 @@ function renderList(items, itemList) {
 }
 
 var handleEl = function handleEl(el, itemList) {
-  var todoItems = itemList.querySelectorAll(".item");
+  var todoItems = itemList.querySelectorAll(".item"); // --> list of nodes that have class item
+
   todoItems.forEach(function (item) {
     if (item.querySelector(".item-name").textContent === el) {
       //complete event listener
@@ -228,7 +235,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62930" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54592" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

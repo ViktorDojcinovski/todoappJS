@@ -23,6 +23,28 @@
     <meta name="theme-color" content="#fafafa">
   <script src="/normalize.1114379f.js"></script><script src="/main.c52e0fe2.js"></script><script src="/gallery.20afaf5e.js"></script></head>
   <body>
+    <!--filter buttons -->
+    <div class="row">
+      <div class="col-lg-8 mx-auto d-flex justify-content-around my-2 sortBtn flex-wrap">
+        <a href="#" class="btn btn-outline-secondary btn-black text-uppercase filter-btn m-2" data-filter="all">
+          all</a>
+        <a href="#" class="btn btn-outline-secondary btn-black text-uppercase filter-btn m-2" data-filter="doughnuts">doughnuts</a>
+      </div>
+    </div>
+    <!-- search box -->
+    <div class="row">
+      <div class="col-10 mx-auto col-md-6">
+        <form>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text search-box" id="search-icon"><i class="fas fa-search"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="item...." id="search-item">
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--end of filter buttons -->
     <div class="row" id="store-items">
       <!-- single item -->
       <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="dougnuts">
@@ -54,6 +76,21 @@
         <!-- end of card-->
       </div>
       <!--end of single store item-->
+      <!-- single item -->
+      <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="sweets">
+        <div class="card">
+          <div class="img-container">
+            <img src="/doughnut-3.12048304.jpeg" class="card-img-top store-img" alt="">
+          </div>
+          <div class="card-body">
+            <div class="card-text d-flex justify-content-between text-capitalize">
+              <h5 id="store-item-name">Turkish doughnut</h5>
+            </div>
+          </div>
+        </div>
+        <!-- end of card-->
+      </div>
+      <!--end of single store item-->
     </div>
 
     <!-- modal-container -->
@@ -67,8 +104,6 @@
         </div>
       </div>
     </div>
-
-    <script>var a = "b";</script>
     <script src="/main-gallery.4c979d3b.js"></script>
   </body>
 </html>
