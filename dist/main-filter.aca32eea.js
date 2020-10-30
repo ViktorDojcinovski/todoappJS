@@ -117,70 +117,44 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/main-gallery.js":[function(require,module,exports) {
-//Use an IIFE to avoid contanminating global namespce
-(function f() {
-  //Grab stores items from the DOM
-  var storeItems = document.querySelectorAll(".store-item"); //grab lightbox container
-
-  var lightBox = document.querySelector(".lightbox-container"); //grab the div with the lightbox item
-
-  var lightBoxItem = document.querySelector(".lightbox-item"); //grab all the images from the store items
-
-  var images = document.querySelectorAll(".store-img"); // set up an array for the items
-
-  var imageList = []; //set up a counter to run through the list of images
-
-  var imageCounter = 0; //use a forEach loop to get a copy of all the images and push into an array of items
-
-  images.forEach(function (image) {
-    //push each imageto the array of images
-    imageList.push(image.src);
-  }); //Add an a click event listener to each store item
-
-  storeItems.forEach(function (item) {
-    //On click, allow the model container to show
-    //Change css class from display none to display block
-    item.addEventListener("click", function (e) {
-      console.log(e.target.src); //grab the image of the item that was clicked
-
-      var image = e.target.src; //change the background img property of the lightbox item
-
-      lightBoxItem.style.backgroundImage = "url(".concat(image, ")"); // --> 'url(' + image + ')'
-      //show the modal with the selected image
-
-      lightBox.classList.add("show"); //get the array index number for the image that was selected
-
-      imageCounter = imageList.indexOf(image);
+})({"js/main-filter.js":[function(require,module,exports) {
+(function () {
+  // refactor to get rid of DRY code
+  var buttons = document.querySelectorAll(".btn");
+  var storeItems = document.querySelectorAll(".store-item");
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function (e) {
+      e.preventDefault();
+      var filter = e.target.dataset.filter;
+      storeItems.forEach(function (item) {
+        if (filter === "all") {
+          item.style.display = "block";
+        } else {
+          if (item.classList.contains(filter)) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        }
+      });
     });
-  }); //wire up the left and right buttons
-  //select left button from the DOM
+  });
+})(); //wire up filter search box
 
-  var btnLeft = document.querySelector(".btnLeft");
-  btnLeft.addEventListener("click", function () {
-    imageCounter--;
 
-    if (imageCounter < 0) {
-      imageCounter = imageList.length - 1;
-    }
+(function () {
+  var searchBox = document.querySelector("#search-item");
+  var storeItems = document.querySelectorAll(".store-item");
+  searchBox.addEventListener("keyup", function (e) {
+    var searchFilter = e.target.value.toLowerCase().trim(); //display only items that contain filter input
 
-    lightBoxItem.style.backgroundImage = "url(".concat(imageList[imageCounter], ")");
-  }); //select left button from the DOM
-
-  var btnRight = document.querySelector(".btnRight");
-  btnRight.addEventListener("click", function () {
-    imageCounter++;
-
-    if (imageCounter >= imageList.length) {
-      imageCounter = 0;
-    }
-
-    lightBoxItem.style.backgroundImage = "url(".concat(imageList[imageCounter], ")");
-  }); //wire up the modal's close button
-
-  var lightBoxClose = document.querySelector(".lightbox-close");
-  lightBoxClose.addEventListener("click", function () {
-    lightBox.classList.remove("show");
+    storeItems.forEach(function (item) {
+      if (item.querySelector("h5") && item.querySelector("h5").textContent.toLowerCase().includes(searchFilter)) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
   });
 })();
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -211,7 +185,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65156" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60056" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -387,5 +361,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/main-gallery.js"], null)
-//# sourceMappingURL=/main-gallery.4c979d3b.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/main-filter.js"], null)
+//# sourceMappingURL=/main-filter.aca32eea.js.map
